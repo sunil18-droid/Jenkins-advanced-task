@@ -26,8 +26,7 @@ sh 'test -f Dockerfile'
 }
 stage('Docker Build'){
 steps {
-sh 'docker build -t 
-${jenkins-web-app}:${BUILD_NUMBER} .'
+sh 'docker build -t ${jenkins-web-app}:${BUILD_NUMBER} .'
 }
 }
 stage('Deploy') {
