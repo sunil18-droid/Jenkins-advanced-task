@@ -26,16 +26,16 @@ sh 'test -f Dockerfile'
 }
 stage('Docker Build'){
 steps {
-sh 'docker build -t ${jenkins-web-app}:${BUILD_NUMBER} .'
+sh 'docker build -t jenkins-web-app:${BUILD_NUMBER} .'
 }
 }
 stage('Deploy') {
 steps {
 sh '''
-docker rm -f ${jenkins-web-container} || true
-docker run -d  -p ${8085}:80 
---name ${jenkins-web-container}
-${jenkins-web-app}:${build_number}
+docker rm -f jenkins-web-container || true
+docker run -d  -p 8085:80 
+--name jenkins-web-container
+jenkins-web-app:${build_number}
 '''
 }
 }
