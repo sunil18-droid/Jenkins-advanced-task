@@ -33,11 +33,13 @@ stage('Deploy') {
 steps {
 sh '''
 docker rm -f ${jenkins-web-container} || true
-docker run -d \ -p ${8085}:80 \
---name ${jenkins-web-container} \
+docker run -d  -p ${8085}:80 
+--name ${jenkins-web-container}
 ${jenkins-web-app}:${build_number}
 '''
-stage('verify'){
+}
+}
+stage('verify') {
 steps {
 sh 'curl -f http://localhost:${8085}'
 }
@@ -52,4 +54,3 @@ echo 'CI/CD Pipeline failed. Check the console output.'
 }
 }
 }
-
