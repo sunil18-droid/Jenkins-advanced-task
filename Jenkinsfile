@@ -16,7 +16,7 @@ url:'http://github.com/sunil18-droid/jenkins-advanced-task.git'
 stage('Build'){
 steps {
 echo 'Checking project files...'
-sh 'ls-l'
+sh 'ls -l'
 }
 }
 stage('Test'){
