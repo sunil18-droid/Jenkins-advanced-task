@@ -36,8 +36,8 @@ sh 'docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} .'
 stage('Deploy'){
 steps {
 echo 'Deploying applications...'
-sh 'docker rm -f  || true'
-sh 'docker run -d -p ${HOST_PORT}:80 --name $(CONTAINER_NAME} $(IMAGE_NAME}:${BUILD_NUMBER}'
+sh 'docker rm -f ${CONTAINER_NAME}  || true'
+sh 'docker run -d -p ${HOST_PORT}:80 --name ${CONTAINER_NAME} ${IMAGE_NAME}:${BUILD_NUMBER}'
 }
 }
 stage('verify'){
